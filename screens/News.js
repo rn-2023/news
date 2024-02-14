@@ -46,8 +46,8 @@ export default function News({navigation}) {
     return (
       <View style={styles.container}>
         <ScrollView>
-          {items.map(item =>(
-            <Pressable key={item.title} onPress={() => navigation.navigate('Details',{news: item})}>
+          {items.map((item, index) =>(
+            <Pressable key={index} onPress={() => navigation.navigate('Details',{news: item})}>
               <View style={styles.news} key={item.title}>
                 <Text style={styles.title}>{item.title}</Text>
                 <View style={styles.imageWrapper}>
