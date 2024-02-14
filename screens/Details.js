@@ -8,6 +8,7 @@ export default function Details({route,navigation}) {
 
   useEffect(() => {
     if (route.params?.news) {
+      console.log(route.params.news);
       setTitle(route.params.news.title);
       setImage(route.params.news.urlToImage);
       setDescription(route.params.news.description);

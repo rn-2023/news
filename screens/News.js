@@ -47,19 +47,21 @@ export default function News({navigation}) {
       <View style={styles.container}>
         <ScrollView>
           {items.map((item, index) =>(
-            <Pressable key={index} onPress={() => navigation.navigate('Details',{news: item})}>
-              <View style={styles.news} key={item.title}>
-                <Text style={styles.title}>{item.title}</Text>
-                <View style={styles.imageWrapper}>
-                  <Image
-                    style={styles.thumbnail}
-                    source={{
-                      uri: item.urlToImage,
-                    }}
-                  />
+            (item.title !== "[Removed]" && item.title !== null &&
+              item.urlToImage !== null && item.description !== null ) &&
+              <Pressable key={index} onPress={() => navigation.navigate('Details',{news: item})}>
+                <View style={styles.news} key={item.title}>
+                  <Text style={styles.title}>{item.title}</Text>
+                  <View style={styles.imageWrapper}>
+                    <Image
+                      style={styles.thumbnail}
+                      source={{
+                        uri: item.urlToImage,
+                      }}
+                    />
+                  </View>
                 </View>
-              </View>
-            </Pressable>
+              </Pressable>
           ))}
         </ScrollView>
       </View>
