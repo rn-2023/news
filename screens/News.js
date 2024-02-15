@@ -1,10 +1,10 @@
-import React,{useState,useEffect} from 'react';
+import React,{ useState,useEffect } from 'react';
 import {StyleSheet,View, Text, Image, ScrollView, Pressable} from 'react-native';
 
 const URL = 'https://newsapi.org/v2';
 const APIKEY = ''; // YOUR OWN API KEY HERE
 
-export default function News({navigation}) {
+export default function News({ navigation }) {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
@@ -25,8 +25,7 @@ export default function News({navigation}) {
         setItems([]);
       }
     )
-  }, [])
-
+  }, []);
 
   if (error) {
     return (
@@ -48,8 +47,10 @@ export default function News({navigation}) {
         <ScrollView>
           {items.map((item, index) =>(
             (item.title !== "[Removed]" && item.title !== null &&
-              item.urlToImage !== null && item.description !== null ) &&
-              <Pressable key={index} onPress={() => navigation.navigate('Details',{news: item})}>
+            item.urlToImage !== null && item.description !== null ) &&
+            <Pressable 
+              key={index} 
+              onPress={() => navigation.navigate('Details', {news: item}) }>
                 <View style={styles.news} key={item.title}>
                   <Text style={styles.title}>{item.title}</Text>
                   <View style={styles.imageWrapper}>
@@ -61,7 +62,7 @@ export default function News({navigation}) {
                     />
                   </View>
                 </View>
-              </Pressable>
+            </Pressable>
           ))}
         </ScrollView>
       </View>
